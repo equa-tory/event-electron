@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Electron Event Test</title>
+</head>
+<body>
+  <h2>Тест кнопки</h2>
+  <button id="myButton">Нажми меня</button>
+
+  <script>
+    const { ipcRenderer } = require('electron');
+
+    const button = document.getElementById('myButton');
+    button.addEventListener('click', () => {
+      ipcRenderer.send('button-click', 'Привет из кнопки!');
+      alert('Событие отправлено в main process');
+    });
+  </script>
+</body>
+</html>
